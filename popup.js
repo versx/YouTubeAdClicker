@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   const toggleSwitch = document.getElementById('enabled');
   const optionsButton = document.getElementById('openOptions');
-  const adClicksElement = document.getElementById('totalAdsClicked');
+  //const adClicksElement = document.getElementById('totalAdsClicked');
 
   console.log('hi');
 
