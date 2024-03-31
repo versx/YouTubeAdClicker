@@ -1,28 +1,38 @@
 function clickAd() {
-  const YouTubeSkipAdButtonSelector = '.ytp-ad-skip-button-modern.ytp-button';
+  //const YouTubeSkipAdButtonSelector = '.ytp-ad-skip-button-modern.ytp-button';
+  const YouTubeSkipAdButtonSelector = '.ytp-ad-skip-button-modern';
   const skipButton = document.querySelector(YouTubeSkipAdButtonSelector);
   if (!skipButton) {
-    console.log('No skip ad button found yet...');
+    //console.log('No skip ad button found yet...');
+    //console.log('Skip ad button not ready yet...');
     return;
   }
 
-  console.log('Skip ad button found, clicking...');
-  // Click the 'Skip' ad button after a short delay
-  // to give the ad time to finish playing.
-  skipButton.click();
+  setTimeout(() => {
+    console.log('Skip ad button found, clicking...');
+    skipButton.click();
+  }, 500);
 
-  //setTimeout(() => {
   // Increment the total number of ads clicked
-  chrome.storage.sync.get({ totalAdsClicked: 0 }, function(data) {
+  chrome.storage.sync.get(['totalAdsClicked'], function(data) {
     chrome.storage.sync.set({ totalAdsClicked: data.totalAdsClicked + 1 });
   });
-  //}, 2 * 1000);
 
   // Check for 'Skip' ad button again
   setTimeout(clickAd, 1000);
 }
 
-clickAd();
+const observer = new MutationObserver(() => {
+  const isAdShowing = document.querySelector('.ad-showing');
+  if (isAdShowing) {
+    clickAd();
+  }
+}).observe(document.querySelector('body'), {
+  characterData: true,
+  childList: true,
+  attributes: true,
+  subtree: true,
+});
 console.log('YouTube Ad Clicker extension loaded');
 
 /*
