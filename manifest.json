@@ -4,12 +4,10 @@
   "version": "1.0.0",
   "manifest_version": 3,
   "author": "versx",
-  "background": {
-    "service_worker": "background.js"
-  },
   "content_scripts": [
     {
-      "matches": ["*://www.youtube.com/*"],
+      "all_frames": true,
+      "matches": ["*://*.youtube.com/*"],
       "js": ["content.js"],
       "run_at": "document_idle"
     }
@@ -22,7 +20,7 @@
     "storage"
   ],
   "host_permissions": [
-    "*://www.youtube.com/*"
+    "*://*.youtube.com/*"
   ],
   "homepage_url": "https://github.com/versx/YouTubeAdClicker",
   "action": {

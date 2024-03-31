@@ -19,7 +19,8 @@ function restoreOptions() {
   chrome.storage.local.get({
     enabled: true,
     delayBeforeClick: 1000,
-    skipButtonSelector: '.ytp-ad-skip-button-modern.ytp-button',
+    //skipButtonSelector: '.ytp-ad-skip-button-modern.ytp-button',
+    skipButtonSelector: '.ytp-ad-skip-button-modern',
     checkInterval: 1000,
   }, (items) => {
     document.getElementById('enabled').checked = items.enabled;

@@ -66,3 +66,12 @@ button:hover {
     border-radius: 25px;
     min-width: 84px;
 }
+
+.logo-icon {
+    display: block;
+    width: auto;
+    height: 64px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
