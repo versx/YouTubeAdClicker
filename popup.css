@@ -1,0 +1,96 @@
+body {
+    width: 180px;
+    min-height: 100px;
+    padding: 10px;
+    padding-top: 0px;
+    font-family: Arial, sans-serif;
+}
+
+button {
+    padding: 8px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+}
+
+button:hover {
+    background-color: silver;
+}
+
+.title {
+    font-size: 14px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    vertical-align: middle;
+    flex: 1;
+}
+
+.options-icon {
+    width: 14px;
+    height: 14px;
+    color: white;
+}
+
+.options-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    vertical-align: middle;
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 0px;
+}
+
+.footer a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.github-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+}
+
+.version-container {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    gap: 5px;
+}
+
+.ads-clicked-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.ads-clicked-text {
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    vertical-align: middle;
+    gap: 5px;
+}

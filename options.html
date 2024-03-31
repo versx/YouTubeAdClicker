@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Options</title>
+    <link rel="stylesheet" href="options.css">
+    <link rel="stylesheet" href="slider.css">
+  </head>
+  <body>
+    <h1 class="title">Options</h1>
+    <div class="options-container">
+      <form id="optionsForm" class="clearfix">
+        <div class="slider-container" title="Enable or disable advertisement clicking">
+          <label for="enabled" class="toggle-label">
+            Enable automatic 'Skip' advertisement button clicking
+          </label>
+          <label class="switch">
+            <input type="checkbox" id="enabled">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <label title="Amount of time to delay before clicking the 'Skip' button">
+          Delay before click skip ad button (milliseconds):
+          <input type="number" id="delayBeforeClick" min="0" step="100">
+        </label>
+        <label title="CSS selector of 'Skip' ad button on video page">
+          'Skip' button selector:
+          <input type="text" id="skipButtonSelector">
+        </label>
+        <label title="Amount of time in-between checking for 'Skip' button">
+          Check for skip button interval (milliseconds):
+          <input type="number" id="checkInterval" min="100" step="100">
+        </label>
+        <button type="button" id="saveOptions" class="save-button">Save</button>
+      </form>
+    </div>
+    <script src="options.js"></script>
+    <script src="utils.js"></script>
+  </body>
+</html>

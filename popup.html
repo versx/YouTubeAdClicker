@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="popup.css">
+    <link rel="stylesheet" type="text/css" href="slider.css">
+    <title>YouTube Ad Clicker</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="options-header">
+        <h1 class="title">YouTube Ad Clicker</h1>
+        <button id="openOptions" title="Open options page">
+          <img src="images/options.png" alt="Options" class="options-icon" />
+        </button>
+      </div>
+      <div class="slider-container" title="Enable or disable automatic advertisement clicking">
+        <label for="enabled" class="toggle-label">Enabled</label>
+        <label class="switch">
+          <input type="checkbox" id="enabled">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="ads-clicked-container">
+        <label class="ads-clicked-text">
+          <span id="totalAdsClicked" class="ads-clicked-text">0</span>
+          &nbsp;Total Ads Clicked
+        </label>
+      </div>
+      <div class="footer">
+        <a href="https://buymeacoffee.com/versx" target="_blank" title="Buy the developer a cup of coffee!">
+          &copy; versx 2024
+        </a>
+        <div class="version-container">
+          <label>v1.0.0</label>
+          <a href="https://github.com/versx/YouTubeAdClicker" target="_blank" title="Visit GitHub repository">
+            <img src="images/github.png" alt="GitHub" class="github-icon" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="popup.js"></script>
+  <script src="utils.js"></script>
+</html>
