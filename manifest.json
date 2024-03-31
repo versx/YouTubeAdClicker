@@ -1,7 +1,7 @@
 {
   "name": "YouTube Ad Clicker",
   "description": "Automatically click 'Skip' button in YouTube ads.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "manifest_version": 3,
   "author": "versx",
   "content_scripts": [
