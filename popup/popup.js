@@ -1,9 +1,8 @@
+// TODO: Install date
 document.addEventListener('DOMContentLoaded', function() {
   const toggleSwitch = document.getElementById('enabled');
   const optionsButton = document.getElementById('openOptions');
   //const adClicksElement = document.getElementById('totalAdsClicked');
-
-  console.log('hi');
 
   optionsButton.addEventListener('click', openOptionsPage);
 
@@ -12,18 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Load the current state
-  chrome.storage.sync.get('enabled', function(data) {
-    console.log('loaded enabled:', data.enabled);
+  chrome.storage.sync.get(['enabled'], function(data) {
     toggleSwitch.checked = data.enabled;
   });
 
-  chrome.storage.sync.get('totalAdsClicked', function(data) {
-    console.log('totalAdsClicked:', data.totalAdsClicked || 0);
+  chrome.storage.sync.get(['totalAdsClicked'], function(data) {
     document.getElementById('totalAdsClicked').textContent = data.totalAdsClicked || 0;
   });
 
   chrome.storage.onChanged.addListener(function(changes, namespace) {
-    console.log('storage changed:', changes, namespace);
     document.getElementById('totalAdsClicked').textContent = changes.totalAdsClicked?.newValue || 0;
   });
 

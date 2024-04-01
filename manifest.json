@@ -8,15 +8,12 @@
     {
       "all_frames": true,
       "matches": ["*://*.youtube.com/*"],
-      "js": ["content.js"],
+      "js": ["/scripts/content.js"],
       "run_at": "document_idle"
     }
   ],
   "permissions": [
-    "activeTab",
-    "tabs",
     "notifications",
-    "scripting",
     "storage"
   ],
   "host_permissions": [
@@ -24,7 +21,7 @@
   ],
   "homepage_url": "https://github.com/versx/YouTubeAdClicker",
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "/popup/popup.html",
     "default_icon": {
       "16": "/images/logo_button_white.png",
       "32": "/images/logo_button_white.png",
@@ -38,5 +35,5 @@
     "48": "/images/logo_button_white.png",
     "128": "/images/logo_button_white.png"
   },
-  "options_page": "options.html"
+  "options_page": "/options/options.html"
 }
