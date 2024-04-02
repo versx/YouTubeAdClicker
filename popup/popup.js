@@ -2,7 +2,8 @@
 document.addEventListener('DOMContentLoaded', function() {
   const toggleSwitch = document.getElementById('enabled');
   const optionsButton = document.getElementById('openOptions');
-  //const adClicksElement = document.getElementById('totalAdsClicked');
+  const adClicksElement = document.getElementById('totalAdsClicked');
+  const installDate = document.getElementById('installDate');
 
   optionsButton.addEventListener('click', openOptionsPage);
 
@@ -14,13 +15,17 @@ document.addEventListener('DOMContentLoaded', function() {
   chrome.storage.sync.get(['enabled'], function(data) {
     toggleSwitch.checked = data.enabled;
   });
-
   chrome.storage.sync.get(['totalAdsClicked'], function(data) {
-    document.getElementById('totalAdsClicked').textContent = data.totalAdsClicked || 0;
+    adClicksElement.textContent = data.totalAdsClicked || 0;
+  });
+  chrome.storage.sync.get(['installDate'], function(data) {
+    installDate.textContent = data.installDate
+      ? new Date(data.installDate).toLocaleDateString()
+      : 'Unknown';
   });
 
   chrome.storage.onChanged.addListener(function(changes, namespace) {
-    document.getElementById('totalAdsClicked').textContent = changes.totalAdsClicked?.newValue || 0;
+    adClicksElement.textContent = changes.totalAdsClicked?.newValue || 0;
   });
 
   function saveOptions() {

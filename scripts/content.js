@@ -1,3 +1,7 @@
+chrome.runtime.onInstalled.addListener(function() {
+  chrome.storage.sync.set({ enabled: true, totalAdsClicked: 0, installDate: Date.now() });
+});
+
 function clickAd() {
   //const YouTubeSkipAdButtonSelector = '.ytp-ad-skip-button-modern.ytp-button';
   const YouTubeSkipAdButtonSelector = '.ytp-ad-skip-button-modern.ytp-button';
