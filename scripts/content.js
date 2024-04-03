@@ -1,28 +1,30 @@
-chrome.runtime.onInstalled.addListener(function() {
-  chrome.storage.sync.set({ enabled: true, totalAdsClicked: 0, installDate: Date.now() });
-});
+function run(delayBeforeClick = 500, clickInterval = 1000) {
+  setTimeout(() => {
+    clickAd(delayBeforeClick, clickInterval);
+  }, clickInterval);
+}
 
-function clickAd() {
+function clickAd(delayBeforeClick = 500, clickInterval = 1000) {
   //const YouTubeSkipAdButtonSelector = '.ytp-ad-skip-button-modern.ytp-button';
   const YouTubeSkipAdButtonSelector = '.ytp-ad-skip-button-modern.ytp-button';
   const skipButton = document.querySelector(YouTubeSkipAdButtonSelector);
   if (!skipButton) {
     //console.log('Skip ad button not ready yet...');
-    setTimeout(clickAd, 1000);
+    //run(delayBeforeClick, clickInterval);
     return;
   }
 
   const video = document.querySelector('video');
   if (!video) {
     //console.log('video not found...');
-    setTimeout(clickAd, 1000);
+    //run(delayBeforeClick, clickInterval);
     return;
   }
 
   const canClickSkipButton = skipButton.checkVisibility({ visible: true });
   if (!canClickSkipButton) {
     console.log('Ad is still active, waiting...');
-    setTimeout(clickAd, 1000);
+    //run(delayBeforeClick, clickInterval);
     return;
   }
 
@@ -34,16 +36,28 @@ function clickAd() {
     chrome.storage.sync.get(['totalAdsClicked'], function(data) {
       chrome.storage.sync.set({ totalAdsClicked: data.totalAdsClicked + 1 });
     });
-  }, 500);
+  }, delayBeforeClick);
 
   // Check for 'Skip' ad button again
-  setTimeout(clickAd, 1000);
+  //run(delayBeforeClick, clickInterval);
 }
 
+if (chrome.runtime.onInstalled) {
+  chrome.runtime.onInstalled.addListener(function() {
+    chrome.storage.sync.set({
+      enabled: true,
+      totalAdsClicked: 0,
+      installDate: Date.now(),
+    });
+  });
+}
+
+const ClickInterval = 1000;
+const DelayBeforeClick = 1500;
 const observer = new MutationObserver(() => {
   const isAdShowing = document.querySelector('.ad-showing');
   if (isAdShowing) {
-    clickAd();
+    clickAd(DelayBeforeClick, ClickInterval);
   }
 }).observe(document.querySelector('body'), {
   characterData: true,
