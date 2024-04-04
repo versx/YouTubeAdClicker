@@ -1,6 +1,6 @@
 [![Image](.github/images/header.png)](https://buymeacoffee.com/versx)
 
-# YouTube Ad-Clicker
+# YouTube Ad-Clicker (ytadclkr)
 
 Automatically clicks the `Skip` button for YouTube advertisements.
 

@@ -42,15 +42,17 @@ function clickAd(delayBeforeClick = 500, clickInterval = 1000) {
   //run(delayBeforeClick, clickInterval);
 }
 
-if (chrome.runtime.onInstalled) {
-  chrome.runtime.onInstalled.addListener(function() {
-    chrome.storage.sync.set({
-      enabled: true,
-      totalAdsClicked: 0,
-      installDate: Date.now(),
-    });
+chrome.runtime.onInstalled?.addListener(function(details) {
+  if (details.reason !== 'install') {
+    return;
+  }
+
+  chrome.storage.sync.set({
+    enabled: true,
+    totalAdsClicked: 0,
+    installDate: Date.now(),
   });
-}
+});
 
 const ClickInterval = 1000;
 const DelayBeforeClick = 1500;

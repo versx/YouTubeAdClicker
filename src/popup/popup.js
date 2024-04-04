@@ -1,4 +1,3 @@
-// TODO: Install date
 document.addEventListener('DOMContentLoaded', function() {
   const toggleSwitch = document.getElementById('enabled');
   const optionsButton = document.getElementById('openOptions');
@@ -12,13 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Load the current state
-  chrome.storage.sync.get(['enabled'], function(data) {
+  chrome.storage.sync.get(['enabled', 'totalAdsClicked', 'installDate'], function(data) {
+    console.log('data:', data);
     toggleSwitch.checked = data.enabled;
-  });
-  chrome.storage.sync.get(['totalAdsClicked'], function(data) {
-    adClicksElement.textContent = data.totalAdsClicked || 0;
-  });
-  chrome.storage.sync.get(['installDate'], function(data) {
+    adClicksElement.textContent = (data.totalAdsClicked || 0).toLocaleString();
     installDate.textContent = data.installDate
       ? new Date(data.installDate).toLocaleDateString()
       : 'Unknown';
@@ -32,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const enabled = document.getElementById('enabled').checked;
     chrome.storage.sync.set({ enabled }, () => {
       const enabledText = toggleSwitch.checked ? 'enabled' : 'disabled';
-      showNotification('YouTube Ad-Clicker', 'YouTube Ad clicker has been ' + enabledText + '.');
+      showNotification('YouTube Ad-Clicker', `YouTube Ad clicker has been ${enabledText}.`);
       console.log('Options saved.');
     });
   }

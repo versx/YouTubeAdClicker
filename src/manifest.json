@@ -1,5 +1,5 @@
 {
-  "name": "YouTube Ad Clicker",
+  "name": "ytadclkr",
   "description": "Automatically click 'Skip' button in YouTube ads.",
   "version": "1.0.1",
   "manifest_version": 3,
@@ -23,17 +23,17 @@
   "action": {
     "default_popup": "/popup/popup.html",
     "default_icon": {
-      "16": "/images/logo_button_white.png",
-      "32": "/images/logo_button_white.png",
-      "48": "/images/logo_button_white.png",
-      "128": "/images/logo_button_white.png"
+      "16": "/assets/images/logo_button.png",
+      "32": "/assets/images/logo_button.png",
+      "48": "/assets/images/logo_button.png",
+      "128": "/assets/images/logo_button.png"
     }
   },
   "icons": {
-    "16": "/images/logo_button_white.png",
-    "32": "/images/logo_button_white.png",
-    "48": "/images/logo_button_white.png",
-    "128": "/images/logo_button_white.png"
+    "16": "/assets/images/logo_button.png",
+    "32": "/assets/images/logo_button.png",
+    "48": "/assets/images/logo_button.png",
+    "128": "/assets/images/logo_button.png"
   },
   "options_page": "/options/options.html"
 }
