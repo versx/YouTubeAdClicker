@@ -5,18 +5,19 @@ function run(delayBeforeClick = 500, clickInterval = 1000) {
 }
 
 function clickAd(delayBeforeClick = 500, clickInterval = 1000) {
+  console.log('clickAd:', delayBeforeClick, clickInterval);
   //const YouTubeSkipAdButtonSelector = '.ytp-ad-skip-button-modern.ytp-button';
   const YouTubeSkipAdButtonSelector = '.ytp-ad-skip-button-modern.ytp-button';
   const skipButton = document.querySelector(YouTubeSkipAdButtonSelector);
   if (!skipButton) {
-    //console.log('Skip ad button not ready yet...');
+    console.log('Skip ad button not ready yet...');
     //run(delayBeforeClick, clickInterval);
     return;
   }
 
   const video = document.querySelector('video');
   if (!video) {
-    //console.log('video not found...');
+    console.log('video not found...');
     //run(delayBeforeClick, clickInterval);
     return;
   }
@@ -43,6 +44,7 @@ function clickAd(delayBeforeClick = 500, clickInterval = 1000) {
 }
 
 chrome.runtime.onInstalled?.addListener(function(details) {
+  console.log('onInstalled:', details);
   if (details.reason !== 'install') {
     return;
   }
@@ -59,6 +61,7 @@ const DelayBeforeClick = 1500;
 const observer = new MutationObserver(() => {
   const isAdShowing = document.querySelector('.ad-showing');
   if (isAdShowing) {
+    console.log('isAdShowing:', isAdShowing);
     clickAd(DelayBeforeClick, ClickInterval);
   }
 }).observe(document.querySelector('body'), {
@@ -67,6 +70,7 @@ const observer = new MutationObserver(() => {
   attributes: true,
   subtree: true,
 });
+
 console.log('YouTube Ad Clicker extension loaded');
 
 /*

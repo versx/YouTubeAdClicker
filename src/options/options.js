@@ -3,8 +3,8 @@ function saveOptions() {
   const delayBeforeClick = document.getElementById('delayBeforeClick').value;
   const skipButtonSelector = document.getElementById('skipButtonSelector').value;
   const checkInterval = document.getElementById('checkInterval').value;
-  
-  chrome.storage.local.set({
+
+  chrome.storage.sync.set({
     enabled,
     delayBeforeClick,
     skipButtonSelector,
@@ -15,14 +15,38 @@ function saveOptions() {
   });
 }
 
+function setDefaultOptions() {
+  chrome.storage.sync.get([
+    'enabled',
+    'delayBeforeClick',
+    'clickInterval',
+    'totalAdsClicked',
+    'installDate',
+  ], (data) => {
+    if (!data.installDate) {
+      console.log('setting default options:', JSON.stringify(data));
+      chrome.storage.sync.set({
+        enabled: true,
+        delayBeforeClick: 500,
+        clickInterval: 1000,
+        totalAdsClicked: 0,
+        installDate: Date.now(),
+      });
+    }
+  });
+}
+
 function restoreOptions() {
-  chrome.storage.local.get({
+  setDefaultOptions();
+
+  chrome.storage.sync.get({
     enabled: true,
-    delayBeforeClick: 1000,
+    delayBeforeClick: 500,
     //skipButtonSelector: '.ytp-ad-skip-button-modern.ytp-button',
     skipButtonSelector: '.ytp-ad-skip-button-modern',
     checkInterval: 1000,
   }, (items) => {
+    console.log('restoreOptions:', items);
     document.getElementById('enabled').checked = items.enabled;
     document.getElementById('delayBeforeClick').value = items.delayBeforeClick;
     document.getElementById('skipButtonSelector').value = items.skipButtonSelector;
